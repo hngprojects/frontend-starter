@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-import { env } from "@/env/client";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: env.NEXT_PUBLIC_APP_URL,
+      url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,

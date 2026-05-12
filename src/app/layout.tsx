@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { env } from "@/env/client";
 
 const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
 
@@ -16,13 +15,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+const appName = process.env.NEXT_PUBLIC_APP_NAME ?? "Next Starter";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(appUrl),
   title: {
-    default: env.NEXT_PUBLIC_APP_NAME,
-    template: `%s · ${env.NEXT_PUBLIC_APP_NAME}`,
+    default: appName,
+    template: `%s · ${appName}`,
   },
-  description: `${env.NEXT_PUBLIC_APP_NAME} — a Next.js 16 starter.`,
+  description: `${appName} — a Next.js 16 starter.`,
 };
 
 export default function RootLayout({
